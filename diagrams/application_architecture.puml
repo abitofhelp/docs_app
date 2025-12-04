@@ -1,4 +1,4 @@
-@startuml layer_dependencies
+@startuml application_architecture
 !theme plain
 skinparam linetype ortho
 skinparam nodesep 80

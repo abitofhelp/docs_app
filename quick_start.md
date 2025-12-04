@@ -439,7 +439,7 @@ ls -lh test/bin/
 
 - **[Software Design Specification](templates/software_design_specification.md)** - Deep dive into architecture
 - **[Architecture Diagrams](diagrams/)** - Visual documentation
-- **[Layer Dependencies](diagrams/layer_dependencies.svg)** - See dependency flow
+- **[Application Architecture](diagrams/application_architecture.svg)** - See dependency flow
 
 ### Read the Source Code
 
