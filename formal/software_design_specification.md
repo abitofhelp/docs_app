@@ -177,7 +177,7 @@ Hybrid_App_Ada uses **Hexagonal Architecture** (Ports and Adapters / Clean Archi
 --    package Person_Result is new Generic_Result (T => Person);
 --  Clients MUST use Create for validation.
 type Person is record
-   Name_Value : Name_Strings.Bounded_String;
+   Name_Value : Person_Strings.Bounded_String;
 end record;
 
 function Create (Name : String) return Person_Result.Result;
@@ -333,11 +333,11 @@ end Execute;
 --  This boundary isolation allows Domain to shrink constraints independently.
 Max_DTO_Name_Length : constant := 256;
 
-package Name_Strings is new
+package Greet_Strings is new
   Ada.Strings.Bounded.Generic_Bounded_Length (Max => Max_DTO_Name_Length);
 
 type Greet_Command is record
-   Name : Name_Strings.Bounded_String;
+   Name : Greet_Strings.Bounded_String;
 end record;
 ```
 

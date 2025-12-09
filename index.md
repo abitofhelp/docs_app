@@ -17,7 +17,7 @@ Shared documentation for hybrid application projects implementing hexagonal arch
 
 - DDD/Clean/Hexagonal architecture (5-layer) demonstration
 - Functional error handling via Result monad
-- SPARK-compatible domain layer for formal verification
+- Domain layer designed with SPARK compatibility in mind (not yet proven)
 - Static dependency injection via generics (zero runtime overhead)
 - Cross-platform: Linux, macOS, BSD, Windows, Embedded
 
@@ -138,8 +138,8 @@ Hybrid applications implement a 5-layer hexagonal architecture:
 **Test Coverage:**
 - 85 unit tests
 - 16 integration tests
-- 0 e2e tests
-- **Total: 101 tests** (all passing)
+- 8 e2e tests
+- **Total: 109 tests** (all passing)
 
 ---
 

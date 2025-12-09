@@ -47,11 +47,11 @@ Hybrid_App_Ada uses three levels of testing:
 - Verify wiring works correctly
 - Location: `test/integration/`
 
-**End-to-End Tests** (0 tests)
+**End-to-End Tests** (8 tests)
 - Test entire system via CLI
 - Black-box testing
 - User scenarios
-- Exit code verification
+- Exit code verification (stdout content validated via unit/integration tests)
 - Location: `test/e2e/`
 
 ### 2.2 Testing Philosophy
@@ -60,7 +60,7 @@ Hybrid_App_Ada uses three levels of testing:
 - **Railway-Oriented**: Test both success and error paths
 - **Comprehensive**: Cover normal, edge, and error cases
 - **Automated**: All tests runnable via `make test-all`
-- **Fast**: All 90 tests execute in < 5 seconds
+- **Fast**: All 109 tests execute in < 5 seconds
 - **Self-Contained**: No external dependencies (custom framework)
 
 ---
@@ -123,12 +123,19 @@ package Test_Framework is
    --  Track test results globally
    procedure Register_Results (Total : Natural; Passed : Natural);
 
-   --  Get aggregate results across all test modules
-   function Get_Total_Tests return Natural;
-   function Get_Total_Passed return Natural;
+   --  Get cumulative results
+   function Grand_Total_Tests return Natural;
+   function Grand_Total_Passed return Natural;
 
-   --  Report final summary
-   procedure Print_Grand_Total;
+   --  Reset counters (for test runner)
+   procedure Reset;
+
+   --  Print professional color-coded category summary box
+   --  Returns exit status: 0 for success, 1 for failure
+   function Print_Category_Summary
+     (Category_Name : String;
+      Total         : Natural;
+      Passed        : Natural) return Integer;
 end Test_Framework;
 ```
 
@@ -193,12 +200,12 @@ end Test_Domain_Person;
 ### 5.1 Quick Start
 
 ```bash
-# Run all 90 tests
+# Run all 109 tests
 make test-all
 
 # Run specific test level
-make test-unit          # 74 unit tests
-make test-integration   # 8 integration tests
+make test-unit          # 85 unit tests
+make test-integration   # 16 integration tests
 make test-e2e           # 8 e2e tests
 ```
 
@@ -272,14 +279,14 @@ Failed:       0
 ========================================
         GRAND TOTAL - ALL UNIT TESTS
 ========================================
-Total tests:   74
-Passed:        74
+Total tests:   85
+Passed:        85
 Failed:        0
 
 ########################################
 ###                                  ###
 ###    UNIT TESTS: SUCCESS
-###    All  74 tests passed!
+###    All  85 tests passed!
 ###                                  ###
 ########################################
 ```
@@ -525,10 +532,10 @@ end;
 ### 10.1 Current Test Metrics (v2.0.0)
 
 **Test Count**:
-- Total: 101 tests
-  - Unit: 85 (84%)
-  - Integration: 16 (16%)
-  - E2E: 0 (0%)
+- Total: 109 tests
+  - Unit: 85 (78%)
+  - Integration: 16 (15%)
+  - E2E: 8 (7%)
 - Pass Rate: 100%
 
 **Coverage by Layer**:
@@ -541,8 +548,8 @@ end;
 **Execution Time**:
 - Unit tests: < 1 second
 - Integration tests: < 1 second
-- E2E tests: N/A (0 tests)
-- Total: < 3 seconds (all 101 tests)
+- E2E tests: < 1 second
+- Total: < 3 seconds (all 109 tests)
 
 ---
 
@@ -602,7 +609,7 @@ make check-arch
 
 All must pass:
 - ✅ Zero build warnings
-- ✅ All 101 tests pass (100% pass rate)
+- ✅ All 109 tests pass (100% pass rate)
 - ✅ Architecture validation passes
 - ✅ Exit code 0 from test runners
 
@@ -656,9 +663,9 @@ Assert (Is_Error (Enriched), "With_Context preserves error state");
 
 | Platform | Unit Tests | Integration Tests | E2E Tests | Status |
 |----------|-----------|-------------------|-----------|--------|
-| Linux | ✅ 85/85 | ✅ 16/16 | N/A | Passing |
-| macOS | ✅ 85/85 | ✅ 16/16 | N/A | Passing |
-| Windows | ✅ 85/85 | ✅ 16/16 | N/A | Passing |
+| Linux | ✅ 85/85 | ✅ 16/16 | ✅ 8/8 | Passing |
+| macOS | ✅ 85/85 | ✅ 16/16 | ✅ 8/8 | Passing |
+| Windows | ✅ 85/85 | ✅ 16/16 | ✅ 8/8 | Passing |
 | BSD | Manual | Manual | Manual | Untested in CI |
 
 **New**: Windows CI support via GitHub Actions ensures cross-platform compatibility.
@@ -677,5 +684,5 @@ Assert (Is_Error (Enriched), "With_Context preserves error state");
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 2.0.0 | 2025-12-08 | Michael Gardner | Updated test counts (101 total); added combinator testing section; Windows CI coverage |
+| 2.0.0 | 2025-12-08 | Michael Gardner | Updated test counts (109 total: 85 unit + 16 integration + 8 e2e); corrected Test_Framework API; added combinator testing section; Windows CI coverage |
 | 1.0.0 | 2025-11-27 | Michael Gardner | Initial release |

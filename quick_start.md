@@ -269,7 +269,7 @@ make test-all
 # Output: Greetings, Alice!
 ```
 
-**Best Practice**: Always run tests after making changes. This project has 101 tests ensuring correctness.
+**Best Practice**: Always run tests after making changes. This project has 109 tests ensuring correctness.
 
 ---
 
@@ -357,8 +357,8 @@ Result.Tap (Log_Success'Access);
 |-----------|-------|----------|
 | Unit Tests | 85 | `test/unit/` |
 | Integration Tests | 16 | `test/integration/` |
-| E2E Tests | 0 | `test/e2e/` |
-| **Total** | **101** | |
+| E2E Tests | 8 | `test/e2e/` |
+| **Total** | **109** | |
 
 ### All Tests
 
@@ -385,7 +385,7 @@ make test-e2e
 ########################################
 ###                                  ###
 ###   ALL TEST SUITES: SUCCESS      ###
-###   All 101 tests passed!          ###
+###   All 109 tests passed!          ###
 ###                                  ###
 ########################################
 ```
