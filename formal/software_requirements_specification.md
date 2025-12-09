@@ -462,8 +462,8 @@ Exit code 1
 **Test Metrics:**
 - 85 unit tests
 - 16 integration tests
-- 0 e2e tests
-- Total: 101 tests (all passing)
+- 8 e2e tests
+- Total: 109 tests (all passing)
 
 ---
 

@@ -700,13 +700,13 @@ The following design decisions support future SPARK verification:
 
 ```
 test/
-├── unit/               # Domain + Application logic (74 tests)
-├── integration/        # Cross-layer tests (8 tests)
+├── unit/               # Domain + Application logic (85 tests)
+├── integration/        # Cross-layer tests (16 tests)
 ├── e2e/                # Full system tests (8 tests)
 └── common/             # Test framework
 ```
 
-**Total Tests**: 90
+**Total Tests**: 109
 
 ### 11.2 Testing Approach
 
@@ -719,8 +719,8 @@ test/
 **Test Counts:**
 - 85 unit tests
 - 16 integration tests
-- 0 e2e tests
-- **Total: 101 tests** (all passing)
+- 8 e2e tests
+- **Total: 109 tests** (all passing)
 
 **Coverage:**
 - Domain Layer: High (pure functions, fully tested)

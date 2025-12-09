@@ -624,8 +624,9 @@ end if;
 ---
 
 **Document Control**:
-- Version: 1.0.0
-- Last Updated: 2025-11-29
+- Version: 2.0.0
+- Last Updated: 2025-12-08
 - Status: Released
 - Copyright © 2025 Michael Gardner, A Bit of Help, Inc.
 - License: BSD-3-Clause
+- SPDX-License-Identifier: BSD-3-Clause
