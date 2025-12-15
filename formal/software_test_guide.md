@@ -1,7 +1,7 @@
 # Software Test Guide
 
-**Version:** 2.0.1  
-**Date:** December 10, 2025  
+**Version:** 2.1.0
+**Date:** December 14, 2025  
 **SPDX-License-Identifier:** BSD-3-Clause<br>
 **License File:** See the LICENSE file in the project root<br>
 **Copyright:** © 2025 Michael Gardner, A Bit of Help, Inc.<br>  
@@ -33,26 +33,28 @@ This document covers:
 
 Hybrid_App_Ada uses three levels of testing:
 
-**Unit Tests** (85 tests)
+**Unit Tests**
 - Test individual components in isolation
 - Focus on Domain and Application logic
 - Pure functions, predictable results
 - Fast execution
 - Location: `test/unit/`
 
-**Integration Tests** (16 tests)
+**Integration Tests**
 - Test cross-layer interactions
 - Real Infrastructure adapters
 - Application use cases with dependencies
 - Verify wiring works correctly
 - Location: `test/integration/`
 
-**End-to-End Tests** (8 tests)
+**End-to-End Tests**
 - Test entire system via CLI
 - Black-box testing
 - User scenarios
 - Exit code verification (stdout content validated via unit/integration tests)
 - Location: `test/e2e/`
+
+See CHANGELOG for current test counts per release.
 
 ### 2.2 Testing Philosophy
 
@@ -60,7 +62,7 @@ Hybrid_App_Ada uses three levels of testing:
 - **Railway-Oriented**: Test both success and error paths
 - **Comprehensive**: Cover normal, edge, and error cases
 - **Automated**: All tests runnable via `make test-all`
-- **Fast**: All 109 tests execute in < 5 seconds
+- **Fast**: All tests execute in < 5 seconds
 - **Self-Contained**: No external dependencies (custom framework)
 
 ---
@@ -200,13 +202,13 @@ end Test_Domain_Person;
 ### 5.1 Quick Start
 
 ```bash
-# Run all 109 tests
+# Run all tests
 make test-all
 
 # Run specific test level
-make test-unit          # 85 unit tests
-make test-integration   # 16 integration tests
-make test-e2e           # 8 e2e tests
+make test-unit          # Unit tests
+make test-integration   # Integration tests
+make test-e2e           # E2E tests
 ```
 
 ### 5.2 Make Targets
@@ -269,8 +271,8 @@ Testing: Domain.Value_Object.Person
 ========================================
 Test Summary: Domain.Value_Object.Person
 ========================================
-Total tests:  22
-Passed:       22
+Total tests:  [N]
+Passed:       [N]
 Failed:       0
 ```
 
@@ -279,17 +281,19 @@ Failed:       0
 ========================================
         GRAND TOTAL - ALL UNIT TESTS
 ========================================
-Total tests:   85
-Passed:        85
+Total tests:   [N]
+Passed:        [N]
 Failed:        0
 
 ########################################
 ###                                  ###
 ###    UNIT TESTS: SUCCESS
-###    All  85 tests passed!
+###    All [N] tests passed!
 ###                                  ###
 ########################################
 ```
+
+*Note: [N] represents current test counts. See CHANGELOG for actual values.*
 
 ---
 
@@ -529,27 +533,23 @@ end;
 
 ## 10. Test Statistics
 
-### 10.1 Current Test Metrics (v2.0.0)
+### 10.1 Test Metrics
 
-**Test Count**:
-- Total: 109 tests
-  - Unit: 85 (78%)
-  - Integration: 16 (15%)
-  - E2E: 8 (7%)
-- Pass Rate: 100%
+See CHANGELOG for current test metrics per release, including:
+- Test count breakdown by level (unit, integration, e2e)
+- Pass rate
+- Execution times
 
-**Coverage by Layer**:
+**Coverage by Layer** (structural):
 - Domain Layer: High (pure functions, fully tested)
 - Application Layer: High (use cases covered)
 - Infrastructure Layer: Adequate (integration tests)
 - Presentation Layer: Good (E2E tests)
 - Bootstrap Layer: Verified (E2E tests)
 
-**Execution Time**:
-- Unit tests: < 1 second
-- Integration tests: < 1 second
-- E2E tests: < 1 second
-- Total: < 3 seconds (all 109 tests)
+**Performance Goals**:
+- All tests should execute in < 5 seconds total
+- No individual test should exceed 1 second
 
 ---
 
@@ -609,7 +609,7 @@ make check-arch
 
 All must pass:
 - ✅ Zero build warnings
-- ✅ All 109 tests pass (100% pass rate)
+- ✅ All tests pass (100% pass rate)
 - ✅ Architecture validation passes
 - ✅ Exit code 0 from test runners
 
@@ -673,8 +673,8 @@ Assert (Is_Error (Enriched), "With_Context preserves error state");
 ---
 
 **Document Control**:
-- Version: 2.0.0
-- Last Updated: 2025-12-08
+- Version: 2.1.0
+- Last Updated: 2025-12-14
 - Status: Released
 - Copyright © 2025 Michael Gardner, A Bit of Help, Inc.
 - License: BSD-3-Clause
@@ -684,5 +684,6 @@ Assert (Is_Error (Enriched), "With_Context preserves error state");
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 2.0.0 | 2025-12-08 | Michael Gardner | Updated test counts (109 total: 85 unit + 16 integration + 8 e2e); corrected Test_Framework API; added combinator testing section; Windows CI coverage |
+| 2.1.0 | 2025-12-14 | Michael Gardner | Remove hardcoded metrics per documentation standards; metrics now in CHANGELOG |
+| 2.0.0 | 2025-12-08 | Michael Gardner | Corrected Test_Framework API; added combinator testing section; Windows CI coverage |
 | 1.0.0 | 2025-11-27 | Michael Gardner | Initial release |

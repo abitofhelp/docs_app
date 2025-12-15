@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 
-**Version:** 2.0.1  
-**Date:** December 10, 2025  
+**Version:** 2.1.0
+**Date:** December 14, 2025  
 **SPDX-License-Identifier:** BSD-3-Clause<br>
 **License File:** See the LICENSE file in the project root<br>
 **Copyright:** © 2025 Michael Gardner, A Bit of Help, Inc.<br>  
@@ -459,22 +459,19 @@ Exit code 1
 - FR-06.8 through FR-06.13: Result combinator operations
 - Windows CI support in GitHub Actions
 
-**Test Metrics:**
-- 85 unit tests
-- 16 integration tests
-- 8 e2e tests
-- Total: 109 tests (all passing)
+See CHANGELOG for test metrics per release.
 
 ---
 
 **Document Control:**
-- Version: 2.0.0
-- Last Updated: 2025-12-08
+- Version: 2.1.0
+- Last Updated: 2025-12-14
 - Status: Released
 
 **Change History:**
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 2.0.0 | 2025-12-08 | Michael Gardner | Upgraded to functional ^3.0.0; added Result combinators (FR-06.8-13); updated test counts (101 total) |
+| 2.1.0 | 2025-12-14 | Michael Gardner | Remove test metrics from Section 8.4 (metrics belong in CHANGELOG) |
+| 2.0.0 | 2025-12-08 | Michael Gardner | Upgraded to functional ^3.0.0; added Result combinators (FR-06.8-13) |
 | 1.0.0 | 2025-12-01 | Michael Gardner | Initial release aligned with hybrid architecture |
